@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Cadastro</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <div id="result"></div>
+    
+        <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}" method="post">
+            {% csrf_token %}
+            <!---->
+            <div class="form-group mt-4">Produto: {{form.nome}}</div>
+            <div class="form-group mt-4">Unidade: {{form.unid}}</div>
+            <div class="form-group mt-4">Qtde      : {{form.qtde}}</div>
+            <!--<div class="form-group mt-4">Data do Pedido: {{form.data}} </div> -->
+            <label>Data do Pedido</label>
+            <input id="date" type="date" value="{{form.data}}">
+            <br>
+            <br>
+
+            <tr>
+                <td><input type="submit" class="btn btn-success" value="Salvar">  
+                <a href="/" class="btn btn-info">Voltar</a>
+                </td> 
+            </tr>
+        </form>
+        
+    </div>
+
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
+</body>
+</html>
